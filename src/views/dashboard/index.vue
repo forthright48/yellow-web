@@ -1,7 +1,7 @@
 <template lang="pug">
   .dashboard-container
     el-row
-      el-col(v-for="user in getUserList")
+      el-col(v-for="user in getUserList" :key="user.username")
         span {{user}}
 </template>
 
