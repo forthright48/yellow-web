@@ -1,8 +1,8 @@
-<template>
-  <div class="dashboard-container">
-    <div class="dashboard-text">name:{{name}}</div>
-    <div class="dashboard-text">roles:<span v-for='role in roles' :key='role'>{{role}}</span></div>
-  </div>
+<template lang="pug">
+  .dashboard-container
+    el-row
+      el-col(v-for="user in getUserList")
+        span {{user}}
 </template>
 
 <script>
@@ -12,9 +12,14 @@ export default {
   name: 'dashboard',
   computed: {
     ...mapGetters([
-      'name',
-      'roles'
-    ])
+      'userList'
+    ]),
+    getUserList() {
+      return Object.values(this.userList)
+    }
+  },
+  async created() {
+    await this.$store.dispatch('GetUsers')
   }
 }
 </script>
