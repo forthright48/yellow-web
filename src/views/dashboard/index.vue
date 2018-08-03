@@ -1,8 +1,8 @@
 <template lang="pug">
   .dashboard-container
-    el-row.wrapColumn(type="flex")
-      el-col(:span="6" v-for="user in getUserList" :key="user.username")
-        UserCard(:dnd="user.dnd" :presence="user.presence" :username="user.username")
+    el-row.wrapColumn(type="flex" :gutter="20")
+      el-col.gutter-top(:span="3" v-for="user in getUserList" :key="user.username")
+        UserCard(:user="user")
 </template>
 
 <script>
@@ -22,6 +22,14 @@ export default {
   },
   async created() {
     await this.$store.dispatch('GetUsers')
+    this.init()
+  },
+  methods: {
+    async init() {
+      setInterval(async() => {
+        await this.$store.dispatch('GetUsers')
+      }, 2000)
+    }
   }
 }
 </script>
@@ -39,5 +47,9 @@ export default {
 
 .wrapColumn{
   flex-wrap: wrap;
+}
+
+.gutter-top {
+  margin-top: 20px;
 }
 </style>

@@ -9,3 +9,9 @@ export default {
   name: 'App'
 }
 </script>
+
+<style>
+.text-center {
+  text-align: center;
+}
+</style>

@@ -8,7 +8,7 @@ const dashboard = {
 
   mutations: {
     SET_USERLIST: (state, userList) => {
-      state.userList = userList
+      state.userList = { ...state.userList, ...userList }
     }
   },
 

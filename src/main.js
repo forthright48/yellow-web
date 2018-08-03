@@ -19,6 +19,10 @@ Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
 
+// CountDown timer
+import VueCountdown from '@xkeshi/vue-countdown'
+Vue.component(VueCountdown.name, VueCountdown)
+
 new Vue({
   el: '#app',
   router,
